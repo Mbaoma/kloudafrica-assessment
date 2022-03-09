@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    #command: redis-server --save 20 1 --loglevel warning --requirepasx
+    volumes:
+      - cache:/data
+
+  mongo:
+    image: mongo
+  kloudafrica:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+      - cache
+      - mongo
+    # expose:
+    #   - '3000'
+    ports:
+      - '3000:3000'
+    command: npm start
+
+volumes:
+  cache:
+    driver: local

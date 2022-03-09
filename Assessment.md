@@ -25,12 +25,6 @@ git clone --depth=1 https://github.com/Microsoft/TypeScript-Node-Starter.git <pr
 - Install dependencies
 ```
 cd <project_name>
-<<<<<<< HEAD
-=======
-brew install eslint
-eslint --init
-npm install -g typescript
->>>>>>> 857db237b69fba8ecba5905e2021ce0a3e5967a6
 npm install
 ```
 
@@ -42,11 +36,6 @@ mongo
 
 - Build and run the project
 ```
-<<<<<<< HEAD
-=======
-export REDIS_HOST=my-redis
-npm install node-sass@4.14.0
->>>>>>> 857db237b69fba8ecba5905e2021ce0a3e5967a6
 npm run build
 npm start
 ```
@@ -59,7 +48,6 @@ npm start
 ```bash
 docker login
 docker build -t <name_for_image> .
-<<<<<<< HEAD
 docker-compose up
 ```
 - Push the image to Dockerhub
@@ -67,13 +55,5 @@ docker-compose up
 docker tag <image_id> <username>/<image_name:tag>
 docker push <username>/<image_name>
 ```
-=======
-sudo docker run -d -p <Browser_expose_port>:<application port> <image_id/name>
-```
 
-### Docker Compose
-- Run docker-compose to build the entire application
-```bash
-docker-compose up
-```
->>>>>>> 857db237b69fba8ecba5905e2021ce0a3e5967a6
+![Docker Image](https://user-images.githubusercontent.com/49791498/157544579-25a4ad0b-8d05-4253-bfb2-d195175c5430.png)

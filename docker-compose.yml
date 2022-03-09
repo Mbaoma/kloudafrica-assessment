@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: "3.2"
 
 services:
@@ -5,20 +6,35 @@ services:
     image: redis:alpine
     ports:
       - 6379:6379
+=======
+version: '3.7'
+
+services:
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    #command: redis-server --save 20 1 --loglevel warning --requirepasx
+>>>>>>> 857db237b69fba8ecba5905e2021ce0a3e5967a6
     volumes:
       - cache:/data
 
   mongo:
     image: mongo
+<<<<<<< HEAD
     ports:
       - 27017:27017
     environment:
       - MONGO_INITDB_DATABASE=testdb
 
+=======
+>>>>>>> 857db237b69fba8ecba5905e2021ce0a3e5967a6
   kloudafrica:
     build:
       context: .
       dockerfile: Dockerfile
+<<<<<<< HEAD
     environment:
       - REDIS_URL=redis://cache:6379
       - MONGODB_URI_LOCAL=mongodb://mongo:27017/testdb
@@ -27,6 +43,16 @@ services:
     depends_on:
       - cache
       - mongo
+=======
+    links:
+      - cache
+      - mongo
+    # expose:
+    #   - '3000'
+    ports:
+      - '3000:3000'
+    command: npm start
+>>>>>>> 857db237b69fba8ecba5905e2021ce0a3e5967a6
 
 volumes:
   cache:

@@ -44,7 +44,6 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useCreateIndex: true } ).the
 const RedisStore = connectRedis(session);
 const client = redis.createClient(process.env.REDIS_URL || "redis://localhost:6379");
 
-
 // Express configuration
 app.set("port", process.env.PORT || 3000);
 app.set("views", path.join(__dirname, "../views"));

@@ -1,0 +1,6 @@
+aws cloudformation delete-stack \
+  --stack-name kloud-africa-network
+
+aws cloudformation wait stack-delete-complete --stack-name kloud-africa-network
+aws cloudformation delete-stack \
+  --stack-name kloud-africa-service

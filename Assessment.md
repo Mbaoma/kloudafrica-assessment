@@ -57,3 +57,26 @@ docker push <username>/<image_name>
 ```
 
 ![Docker Image](https://user-images.githubusercontent.com/49791498/157544579-25a4ad0b-8d05-4253-bfb2-d195175c5430.png)
+
+### Setting Up Cloudformation
+- Install the AWS CLI
+```bash
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+sudo installer -pkg AWSCLIV2.pkg -target /
+```
+- Set up AWS credentials on the CLI
+```bash
+aws configure
+```
+
+- To set up the container using Cloudformation, run the following command:
+```bash
+chmod u+x create-stack 
+./create-stack 
+```
+
+- To delete the resources, run the following:
+```bash
+chmod u+x delete-stack 
+./delete-service-stack
+```

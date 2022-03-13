@@ -1,0 +1,20 @@
+#!/bin/bash
+aws cloudformation create-stack \
+  --stack-name kloud-africa-network \
+  --template-body file://network.yml \
+  --capabilities CAPABILITY_IAM
+
+aws cloudformation wait stack-create-complete --stack-name kloud-africa-network
+
+aws cloudformation create-stack \
+  --stack-name kloud-africa-service \
+  --template-body file://service.yml \
+  --parameters \
+      ParameterKey=StackName,ParameterValue=kloud-africa-network \
+      ParameterKey=ServiceName,ParameterValue=kloud-africa \
+      ParameterKey=ImageUrl,ParameterValue=docker.io/mbaoma/kloudafrica:latest \
+      ParameterKey=ContainerPort,ParameterValue=3000 \
+      ParameterKey=HealthCheckPath,ParameterValue=/hello \
+      ParameterKey=HealthCheckIntervalSeconds,ParameterValue=90
+
+aws cloudformation wait stack-create-complete --stack-name kloud-africa-service

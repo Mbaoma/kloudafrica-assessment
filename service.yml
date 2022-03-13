@@ -22,7 +22,7 @@ Parameters:
     Description: The url of a docker image that will handle incoming traffic.
   ContainerPort:
     Type: Number
-    Default: 80
+    Default: 3000 #80
     Description: The port number the application inside the docker container
       is binding to.
   ContainerCpu:

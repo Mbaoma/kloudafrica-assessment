@@ -12,7 +12,7 @@ aws cloudformation create-stack \
   --parameters \
       ParameterKey=StackName,ParameterValue=kloud-africa-network \
       ParameterKey=ServiceName,ParameterValue=kloud-africa \
-      ParameterKey=ImageUrl,ParameterValue=docker.io/mbaoma/kloudafrica:latest \
+      ParameterKey=ImageUrl,ParameterValue=docker.io/mbaoma/kloudafrica \
       ParameterKey=ContainerPort,ParameterValue=3000 \
       ParameterKey=HealthCheckPath,ParameterValue=/hello \
       ParameterKey=HealthCheckIntervalSeconds,ParameterValue=90

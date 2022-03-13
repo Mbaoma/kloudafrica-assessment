@@ -58,6 +58,10 @@ docker push <username>/<image_name>
 
 ![Docker Image](https://user-images.githubusercontent.com/49791498/157544579-25a4ad0b-8d05-4253-bfb2-d195175c5430.png)
 
+- Pull the image from DockerHub
+```bash
+docker run --net iac-test_default -p 3000:3000 docker.io/mbaoma/kloudafrica
+```
 ### Setting Up Cloudformation
 - Install the AWS CLI
 ```bash

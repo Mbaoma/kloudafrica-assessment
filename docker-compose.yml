@@ -30,4 +30,4 @@ services:
 
 volumes:
   cache:
-    driver: local 
+    driver: local

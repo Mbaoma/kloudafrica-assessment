@@ -45,6 +45,7 @@ Parameters:
 
 Resources:
 
+
   TargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
@@ -81,6 +82,8 @@ Resources:
     Properties:
       LogGroupName: !Ref 'ServiceName'
       RetentionInDays: 1
+
+
 
   TaskDefinition:
     Type: AWS::ECS::TaskDefinition
@@ -138,6 +141,7 @@ Resources:
           ContainerPort: !Ref 'ContainerPort'
           TargetGroupArn: !Ref 'TargetGroup'
 
+  
 Metadata:
   'AWS::CloudFormation::Interface':
     ParameterGroups:

@@ -39,8 +39,7 @@ mongo
 npm run build
 npm start
 ```
-<img width="1230" alt="image" src="https://user-images.githubusercontent.com/49791498/156895830-90ac7a30-6624-414d-8c3f-1420a6cc8c1e.png">
-
+<img width="1317" alt="image" src="https://user-images.githubusercontent.com/49791498/192899812-7d2d2587-0ca4-47c5-aeb2-f00ed54a8fe7.png">
 
 ### Dockerizing the Application
 - Create a Dockerfile at the root of the application folder.

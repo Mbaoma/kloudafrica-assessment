@@ -48,8 +48,12 @@ npm start
 ```bash
 docker login
 docker build -t <name_for_image> .
-docker-compose up
+docker-compose up -d
 ```
+
+<img width="1317" alt="image" src="https://user-images.githubusercontent.com/49791498/192899322-60c0fed3-5b4c-4951-9d94-5c56d5b741a3.png">
+
+
 - Push the image to Dockerhub
 ```bash
 docker tag <image_id> <username>/<image_name:tag>
@@ -84,3 +88,7 @@ chmod u+x create-stack
 chmod u+x delete-stack 
 ./delete-service-stack
 ```
+
+## Debugging
+[npm install error](https://sebhastian.com/npm-err-code-1/#:~:text=code%201%20error%20usually%20occurs,installed%20properly%20on%20your%20computer.&text=This%20means%20that%20npm%20fails,to%20the%20n%2Dapp%20project.)
+[npm run build error](https://stackoverflow.com/questions/60092642/ts1086-an-accessor-cannot-be-declared-in-ambient-context)

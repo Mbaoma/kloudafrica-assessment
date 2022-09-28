@@ -78,9 +78,11 @@ userSchema.methods.comparePassword = comparePassword;
  * Helper method for getting user's gravatar.
  */
 userSchema.methods.gravatar = function (size: number = 200) {
+    //@ts-ignore
     if (!this.email) {
         return `https://gravatar.com/avatar/?s=${size}&d=retro`;
     }
+    //@ts-ignore
     const md5 = crypto.createHash("md5").update(this.email).digest("hex");
     return `https://gravatar.com/avatar/${md5}?s=${size}&d=retro`;
 };

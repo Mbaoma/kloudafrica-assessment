@@ -1,6 +1,5 @@
-AWSTemplateFormatVersion: '2010-09-09'
 Description: Deploy a service on AWS Fargate, hosted in two public subnets and accessible via a public load balancer.
-  Derived from a template at https://github.com/nathanpeck/aws-cloudformation-fargate.
+
 Parameters:
   StackName:
     Type: String
@@ -45,7 +44,6 @@ Parameters:
 
 Resources:
 
-
   TargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
@@ -82,8 +80,8 @@ Resources:
     Properties:
       LogGroupName: !Ref 'ServiceName'
       RetentionInDays: 1
-
-
+  
+  
 
   TaskDefinition:
     Type: AWS::ECS::TaskDefinition
@@ -140,8 +138,7 @@ Resources:
         - ContainerName: !Ref 'ServiceName'
           ContainerPort: !Ref 'ContainerPort'
           TargetGroupArn: !Ref 'TargetGroup'
-
-  
+ 
 Metadata:
   'AWS::CloudFormation::Interface':
     ParameterGroups:

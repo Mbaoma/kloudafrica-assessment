@@ -1,35 +1,25 @@
-AWSTemplateFormatVersion: '2010-09-09'
 Description: A network stack for deploying containers in AWS ECS.
-  This stack creates a VPC with two public subnets and a loadbalancer to balance traffic between those subnets.
-  Derived from a template at https://github.com/nathanpeck/aws-cloudformation-fargate.
 
 Resources:
-
   VPC:
     Type: AWS::EC2::VPC
     Properties:
       CidrBlock: '10.0.0.0/16'
 
   PublicSubnetOne:
-    Type: AWS::EC2::Subnet
-    Properties:
-      AvailabilityZone:
-        Fn::Select:
-          - 0
-          - Fn::GetAZs: {Ref: 'AWS::Region'}
-      VpcId: !Ref 'VPC'
-      CidrBlock: '10.0.1.0/24'
-      MapPublicIpOnLaunch: true
-
+      Type: 'AWS::EC2::Subnet'
+      Properties:
+        VpcId: !Ref VPC
+        CidrBlock: 10.0.1.0/24
+        AvailabilityZone: us-west-1b
+        MapPublicIpOnLaunch: true
+        
   PublicSubnetTwo:
-    Type: AWS::EC2::Subnet
+    Type: 'AWS::EC2::Subnet'
     Properties:
-      AvailabilityZone:
-        Fn::Select:
-          - 1
-          - Fn::GetAZs: {Ref: 'AWS::Region'}
-      VpcId: !Ref 'VPC'
-      CidrBlock: '10.0.2.0/24'
+      VpcId: !Ref VPC
+      CidrBlock: 10.0.2.0/24
+      AvailabilityZone: us-west-1c
       MapPublicIpOnLaunch: true
 
   InternetGateway:
@@ -199,7 +189,6 @@ Resources:
                   - 'logs:CreateLogStream'
                   - 'logs:PutLogEvents'
                 Resource: '*'
-
 
 
 Outputs:

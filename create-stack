@@ -11,11 +11,11 @@ aws cloudformation create-stack \
   --template-body file://./service.yml \
   --parameters \
       ParameterKey=StackName,ParameterValue=kloud-africa-network \
-      ParameterKey=ServiceName,ParameterValue=kloud-africa \
-      ParameterKey=ImageUrl,ParameterValue=docker.io/mbaoma/kloudafrica \
+      ParameterKey=ServiceName,ParameterValue=kloud-africa-service \
+      ParameterKey=ImageUrl,ParameterValue=docker.io/mbaoma/3tier-app \
       ParameterKey=ContainerPort,ParameterValue=3000 \
-      ParameterKey=HealthCheckPath,ParameterValue=/hello \
-      ParameterKey=HealthCheckIntervalSeconds,ParameterValue=90
+      ParameterKey=HealthCheckPath,ParameterValue=/ \
+      ParameterKey=HealthCheckIntervalSeconds,ParameterValue=30
 
 aws cloudformation wait stack-create-complete --stack-name kloud-africa-service
 

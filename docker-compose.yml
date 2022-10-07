@@ -18,9 +18,10 @@ services:
       - MONGO_INITDB_DATABASE=testdb
 
   kloudafrica:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    # build:
+    image: mbaoma/3tier-app
+      # context: .
+      # dockerfile: Dockerfile
     environment:
       - REDIS_URL=redis://cache:6379
       - MONGODB_URI_LOCAL=mongodb://mongo:27017/testdb

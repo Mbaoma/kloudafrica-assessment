@@ -52,19 +52,31 @@ docker-compose up -d
 
 <img width="1317" alt="image" src="https://user-images.githubusercontent.com/49791498/192899322-60c0fed3-5b4c-4951-9d94-5c56d5b741a3.png">
 
-
 - Push the image to Dockerhub
 ```bash
-docker tag <image_id> <username>/<image_name:tag>
-docker push <username>/<image_name>
+$ docker commit <container_id> <username>/<repo_name:tag>
+$ docker push <username>/<repo_name:tag>
 ```
+<img width="1302" alt="image" src="https://user-images.githubusercontent.com/49791498/194593974-62eb0cca-c05e-44c2-9e80-84bc0feef78b.png">
 
-![Docker Image](https://user-images.githubusercontent.com/49791498/157544579-25a4ad0b-8d05-4253-bfb2-d195175c5430.png)
-
-- Pull the image from DockerHub
+- To run the image hosted in DockerHub, change
 ```bash
-docker run --net iac-test_default -p 3000:3000 docker.io/mbaoma/kloudafrica
+kloudafrica:
+    build:
+      context: .
+      dockerfile: Dockerfile
 ```
+to
+```bash
+kloudafrica:
+    image: mbaoma/3tier-app
+```
+
+<!-- - Pull the image from DockerHub
+```bash
+$ docker pull <username>/<repo_name:tag>
+```      -->
+
 ### Setting Up Cloudformation
 - Install the AWS CLI
 ```bash
@@ -75,6 +87,10 @@ sudo installer -pkg AWSCLIV2.pkg -target /
 ```bash
 aws configure
 ```
+
+### Deploy the container to an EC2 instance using Cloudformation
+
+- Use ECS (Elastic Container Service) and Fargate to run the Docker container on EC2 instances.
 
 - To set up the container using Cloudformation, run the following command:
 ```bash

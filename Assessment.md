@@ -52,7 +52,9 @@ docker-compose up -d
 
 <img width="1317" alt="image" src="https://user-images.githubusercontent.com/49791498/192899322-60c0fed3-5b4c-4951-9d94-5c56d5b741a3.png">
 
-- Push the image to Dockerhub
+- Setup [MONGODB_URI](https://www.mongodb.com/atlas/database) and replace this value in your .env.example file.
+
+<!-- - Push the image to Dockerhub
 ```bash
 $ docker commit <container_id> <username>/<repo_name:tag>
 $ docker push <username>/<repo_name:tag>
@@ -71,13 +73,12 @@ to
 kloudafrica:
     image: mbaoma/3tier-app
 ```
-
-<!-- - Pull the image from DockerHub
+then run,
 ```bash
-$ docker pull <username>/<repo_name:tag>
-```      -->
+docker-compose up -d
+``` -->
 
-### Setting Up Cloudformation
+### Setting Up Cloudformation 
 - Install the AWS CLI
 ```bash
 curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
@@ -88,7 +89,28 @@ sudo installer -pkg AWSCLIV2.pkg -target /
 aws configure
 ```
 
-### Deploy the container to an EC2 instance using Cloudformation
+### Deploy the container to ECR 
+- Create an ECR repository
+```bash
+aws cloudformation create-stack --stack-name kloud-assessment-repo --template-body file://ecr.yml --region us-west-1
+```
+
+- Create an ECR repo (ensure Docker is running0) 
+```bash
+$ aws ecr get-login-password --region region | docker login --username AWS --password-stdin aws_account_id.dkr.ecr.region.amazonaws.com
+```
+
+- Push the image to ECR
+```bash
+$ docker build -t <ecr-repo> .
+$ docker tag <image_tag> aws_account_id.dkr.ecr.region.amazonaws.com/my-repository:tag
+$ docker push aws_account_id.dkr.ecr.region.amazonaws.com/my-repository:tag
+```
+
+- Build the stack to run the web application
+```bash
+$ aws cloudformation create-stack --stack-name runner  --template-body file://runner.yml --capabilities CAPABILITY_IAM --region us-west-2 
+```
 
 - Use ECS (Elastic Container Service) and Fargate to run the Docker container on EC2 instances.
 

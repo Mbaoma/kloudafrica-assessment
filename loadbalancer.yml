@@ -1,0 +1,8 @@
+Description: Loadbalancer for Docker container
+Parameters:
+  EnvironmentName:
+    Default: assessment
+    Description: Name of the environment this cloudformation stack belongs to
+    Type: String
+    
+Resources:

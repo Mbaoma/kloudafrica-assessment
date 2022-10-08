@@ -81,8 +81,6 @@ Resources:
       LogGroupName: !Ref 'ServiceName'
       RetentionInDays: 1
   
-  
-
   TaskDefinition:
     Type: AWS::ECS::TaskDefinition
     Properties:

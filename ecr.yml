@@ -1,0 +1,11 @@
+Description: An ECR repo to store Docker container
+Resources:
+  AWSTrainingTestRepo:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: 'kloud-assessment'
+Outputs:
+  AWSTrainingTestArn:
+    Value: !GetAtt AWSTrainingTestRepo.Arn
+    Export:
+      Name: AWSTrainingTestArn

@@ -40,3 +40,8 @@ dist/**/*
 # ignore yarn.lock
 yarn.lock
 dump.rdb
+.env.example
+.eslintignore
+.eslintrc
+debug.log
+.vscode

@@ -7,9 +7,12 @@ We take the following steps to achieve the aim of this project, which is to use 
 ### Steps:
 - Build the app locally
 - Dockerize the application and its requirements
+- Set up CI/CD with Travis, to 
+-- rebuild images
+-- save to docker hub
+-- redeploy images on K8s cluster
 - Build a CloudFormation script that
-    - Uses ECS service to setup the Docker container 
-    - Codify the process of setting up this infrastructure 
+    - publishes the docker container using EKS  
 
 ### Install required dependencies for the app to run locally
 - Install [Node.js 14](https://nodesource.com/blog/installing-node-js-tutorial-using-nvm-on-mac-os-x-and-ubuntu/)
@@ -54,30 +57,6 @@ docker-compose up -d
 
 - Setup [MONGODB_URI](https://www.mongodb.com/atlas/database) and replace this value in your .env.example file.
 
-<!-- - Push the image to Dockerhub
-```bash
-$ docker commit <container_id> <username>/<repo_name:tag>
-$ docker push <username>/<repo_name:tag>
-```
-<img width="1302" alt="image" src="https://user-images.githubusercontent.com/49791498/194593974-62eb0cca-c05e-44c2-9e80-84bc0feef78b.png">
-
-- To run the image hosted in DockerHub, change
-```bash
-kloudafrica:
-    build:
-      context: .
-      dockerfile: Dockerfile
-```
-to
-```bash
-kloudafrica:
-    image: mbaoma/3tier-app
-```
-then run,
-```bash
-docker-compose up -d
-``` -->
-
 ### Setting Up Cloudformation 
 - Install the AWS CLI
 ```bash
@@ -88,6 +67,11 @@ sudo installer -pkg AWSCLIV2.pkg -target /
 ```bash
 aws configure
 ```
+
+### Set up CI/CD with Travis
+-- rebuild images
+-- save to docker hub
+-- redeploy images on K8s cluster
 
 ### Deploy the container to ECR 
 - Create an ECR repository

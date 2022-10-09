@@ -1,0 +1,7 @@
+aws cloudformation create-stack \
+    --stack-name assessment-eks-cluster \
+    --template-body file://../cloudformation/eks.yml \
+    --region us-west-2 \
+    --capabilities CAPABILITY_IAM
+    
+  

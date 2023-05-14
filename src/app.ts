@@ -39,10 +39,21 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useCreateIndex: true } ).the
     // process.exit();
 });
 
+// fix returnTo error
+declare module "express-session" {
+    interface SessionData {
+      returnTo: string;
+    }
+  }
+  
 
 // Connect to Redis server
 const RedisStore = connectRedis(session);
-const client = redis.createClient(process.env.REDIS_URL || "redis://localhost:6379");
+const client = redis.createClient({
+    url: process.env.REDIS_URL || "redis://localhost:6379"
+});
+
+// const client = redis.createClient(process.env.REDIS_URL || "redis://localhost:6379");
 
 // Express configuration
 app.set("port", process.env.PORT || 3000);

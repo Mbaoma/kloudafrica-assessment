@@ -56,6 +56,11 @@ sudo chmod 777 /data/db
 ```
 mongod
 ```
+OR
+
+```
+mongosh
+```
 - Build and run the project
 ```
 npm run build

@@ -37,6 +37,8 @@ sudo chmod 777 /usr/local/var/mongodb
 mongo
 ```
 
+- Setup [MONGODB_URI](https://www.mongodb.com/atlas/database) and replace this value in your .env.example file.
+
 - Build and run the project
 ```
 npm run build
@@ -55,7 +57,35 @@ docker-compose up -d
 
 <img width="1317" alt="image" src="https://user-images.githubusercontent.com/49791498/192899322-60c0fed3-5b4c-4951-9d94-5c56d5b741a3.png">
 
-- Setup [MONGODB_URI](https://www.mongodb.com/atlas/database) and replace this value in your .env.example file.
+### Create a secret
+```bash
+kubectl create secret generic <secret-name> --from-literal key=value
+```
+
+### Run the Kubernetes deployment
+```bash
+$ kubectl apply -f k8s-configs
+```
+
+### Setting up Ingress - Ingress NGINX
+<img width="597" alt="image" src="https://github.com/Mbaoma/kloudafrica-assessment/assets/49791498/c13f2676-03de-4075-93c1-844285fb3a35">
+
+- Follow the [deployment guide](https://kubernetes.github.io/ingress-nginx/deploy/)
+
+- Set up an Ingress controller in Docker Desktop environment on a Mac
+```bash
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml
+$ kubectl apply -f ingress.yaml
+```
+
+- Create a user [here](https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md)
+
+
+### Debugging 
+```bash
+$ kubectl logs <pod-name>  -c <container-name>
+$ kubectl describe pod
+```
 
 ### Setting Up Cloudformation 
 - Install the AWS CLI

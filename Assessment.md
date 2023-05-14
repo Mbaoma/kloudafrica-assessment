@@ -67,6 +67,17 @@ kubectl create secret generic <secret-name> --from-literal key=value
 $ kubectl apply -f k8s-configs
 ```
 
+### Setting up Ingress
+```bash
+$
+```
+
+### Debugging 
+```bash
+$ kubectl logs <pod-name>  -c <container-name>
+$ kubectl describe pod
+```
+
 ### Setting Up Cloudformation 
 - Install the AWS CLI
 ```bash

@@ -67,10 +67,19 @@ kubectl create secret generic <secret-name> --from-literal key=value
 $ kubectl apply -f k8s-configs
 ```
 
-### Setting up Ingress
+### Setting up Ingress - Ingress NGINX
+<img width="597" alt="image" src="https://github.com/Mbaoma/kloudafrica-assessment/assets/49791498/c13f2676-03de-4075-93c1-844285fb3a35">
+
+- Follow the [deployment guide](https://kubernetes.github.io/ingress-nginx/deploy/)
+
+- Set up an Ingress controller in Docker Desktop environment on a Mac
 ```bash
-$
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml
+$ kubectl apply -f ingress.yaml
 ```
+
+- Create a user [here](https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md)
+
 
 ### Debugging 
 ```bash

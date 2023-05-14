@@ -37,6 +37,8 @@ sudo chmod 777 /usr/local/var/mongodb
 mongo
 ```
 
+- Setup [MONGODB_URI](https://www.mongodb.com/atlas/database) and replace this value in your .env.example file.
+
 - Build and run the project
 ```
 npm run build
@@ -55,7 +57,15 @@ docker-compose up -d
 
 <img width="1317" alt="image" src="https://user-images.githubusercontent.com/49791498/192899322-60c0fed3-5b4c-4951-9d94-5c56d5b741a3.png">
 
-- Setup [MONGODB_URI](https://www.mongodb.com/atlas/database) and replace this value in your .env.example file.
+### Create a secret
+```bash
+kubectl create secret generic <secret-name> --from-literal key=value
+```
+
+### Run the Kubernetes deployment
+```bash
+$ kubectl apply -f k8s-configs
+```
 
 ### Setting Up Cloudformation 
 - Install the AWS CLI

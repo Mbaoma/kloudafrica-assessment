@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: mbaoma/3tier-app
+          env:
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service
+            - name: REDIS_PORT
+              value: "6379"
+            - name: MONGO_HOST
+              value: mongo-cluster-ip-service
+            - name: MONGO_PORT
+              value: "27017"
+            - name: MONGO_INITDB_DATABASE
+              value: "testdb"
+            - name: MONGODB_URI_LOCAL
+              value: "mongodb://mongo:27017/testdb"
+          # image: dockerrundavid/cloudy-africa
+          # resources:
+          #   limits:
+          #     memory: "128Mi"
+          #     cpu: "500m"
+          ports:
+            - containerPort: 3000

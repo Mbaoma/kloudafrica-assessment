@@ -87,6 +87,72 @@ $ kubectl logs <pod-name>  -c <container-name>
 $ kubectl describe pod
 ```
 
+## Deploying on Google Kubernetes Enginge
+- Edit the following files
+```
+$ nano k8s-configs/ingress-service.yml 
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kloudafrica-ingress
+  labels:
+    name: kloudafrica-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: client-cluster-ip-service
+                port:
+                  number: 3000
+
+```
+$ nano k8s-configs/client-cluster-ip-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: cache-service
+spec:
+  selector:
+    app: kloudafrica
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+spec:
+  selector:
+    app: kloudafrica
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-cluster-ip-service
+spec:
+  type: NodePort
+  selector:
+    app: kloudafrica
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+```
+
+<img width="1247" alt="image" src="https://github.com/Mbaoma/kloudafrica-assessment/assets/49791498/36082c21-8503-4b4c-9cdb-2c8423eaab87">
+
 ### Setting Up Cloudformation 
 - Install the AWS CLI
 ```bash

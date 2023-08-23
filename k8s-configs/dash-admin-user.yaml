@@ -3,3 +3,4 @@ kind: ServiceAccount
 metadata:
   name: oma
   namespace: kubernetes-dashboard
+  

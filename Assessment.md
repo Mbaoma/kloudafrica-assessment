@@ -87,7 +87,8 @@ $ kubectl logs <pod-name>  -c <container-name>
 $ kubectl describe pod
 ```
 
-## Deploying on Google Kubernetes Enginge
+## Deploying on Google Kubernetes Engine (GKE)
+*[guide](https://cloud.google.com/kubernetes-engine/docs/tutorials/guestbook)*
 - Edit the following files
 ```
 $ nano k8s-configs/ingress-service.yml 
@@ -108,6 +109,7 @@ spec:
                 name: client-cluster-ip-service
                 port:
                   number: 3000
+```
 
 ```
 $ nano k8s-configs/client-cluster-ip-service.yaml
@@ -149,6 +151,11 @@ spec:
     - protocol: TCP
       port: 3000
       targetPort: 3000
+```
+
+- Then apply the configuration
+```
+kubectl apply -f k8s-config
 ```
 
 <img width="1247" alt="image" src="https://github.com/Mbaoma/kloudafrica-assessment/assets/49791498/36082c21-8503-4b4c-9cdb-2c8423eaab87">
